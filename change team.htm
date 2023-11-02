@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body style="background-color:powderblue;">
+<h2 style="text-align:center;">CHANGE REQUESTS MANAGEMENT</h2>
+<br><br><br><br><br>
+<table id="t01">
+  <tr>
+    <th>USER NAME </th>
+    <th>TICKET NUMBER</th>
+    <th>ISSUE</th>
+    <th>DATE OF REQUEST</th>
+    <th>MANAGER APPROVAL</th>
+    <th></th>
+  
+        <?php         
+        $query = "select * from TbCard";
+        $sql = mysqli_query($connect, $query);
+        $count = 0;
+            while ($data = mysqli_fetch_array($sql)) {
+        ?>
+                <tr>
+                <td>
+                    <input name="tableRow[<?php echo $count; ?>]['dataName']" id='name' type='text' value="<?php echo $data['Name'];?>" readonly style='border:none;width:350px'></input>
+                </td>
+                <td>
+                    <input name="tableRow[<?php echo $count; ?>]['status']" type="radio" value="Present"> Present
+                </td>
+                <td>
+                    <input name="tableRow[<?php echo $count; ?>]['status']" type="radio" value="Excused"> Excused
+                </td>
+                <td>
+                    <input name="tableRow[<?php echo $count; ?>]['status']" type="radio" value="Unexcused"> Unexcused
+                </td>
+                </tr>;
+        <?php
+             $count++;
+            }
+        ?>
+       foreach($_POST as $key => $val)
+{
+    if(strpos($key, 'name_') === 0 )
+    {
+        $criteria = explode("_", $key);
+        $index = $criteria[2];
+        //now you can get the rest of the fields
+        $status = $_POST["status_$index"];
+        $name = $_POST["name_$index"];
+        $ext = $_POST["Ext_$index"];
+        //assuming you have a SaveFunction:
+        SaveFunction($name, $status, $ext);
+    }
+}
+    </table>
+<br><br><button onclick="C:\Users\DELL\OneDrive\Desktop\front end\admin">PRINT</button><br><br><button onclick="C:\Users\DELL\OneDrive\Desktop\front end\admin">LOG OUT</button>
+
+</body>
+</html>

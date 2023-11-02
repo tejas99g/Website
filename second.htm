@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body style="background-color:powderblue;">
+<form action="/action_page.php" style="text-align:center;">
+  <label for="fname"><br><br><br><br><br>TICKET:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <label for="lname"><br><br>USER NAME:</label>
+  <input type="text" id="lname" name="lname"><br><br><br><br>
+  
+</form>
+<table id="t01">
+  <tr>
+    <th>EXISTING TICKET</th>
+    <th>TICKET INFO</th> 
+    <th>ISSUE</th>
+    <th>DATE OF TICKET GENERATED</th>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+ <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+ <td></td>
+  </tr>
+ 
+</table>
+<br><br><br><br>
+<a href="third.htm" target="_blank"><button>GENERATE TICKET</button>
+</a>
+</body>
+</html>
